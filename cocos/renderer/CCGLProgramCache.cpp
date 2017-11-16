@@ -55,18 +55,18 @@ enum {
     kShaderType_UIGrayScale,
     kShaderType_LabelNormal,
     kShaderType_LabelOutline,
-    kShaderType_3DPosition,
-    kShaderType_3DPositionTex,
-    kShaderType_3DSkinPositionTex,
-    kShaderType_3DPositionNormal,
-    kShaderType_3DPositionNormalTex,
-    kShaderType_3DSkinPositionNormalTex,
-    kShaderType_3DPositionBumpedNormalTex,
-    kShaderType_3DSkinPositionBumpedNormalTex,
-    kShaderType_3DParticleTex,
-    kShaderType_3DParticleColor,
+    //kShaderType_3DPosition,
+    //kShaderType_3DPositionTex,
+    //kShaderType_3DSkinPositionTex,
+    //kShaderType_3DPositionNormal,
+    //kShaderType_3DPositionNormalTex,
+    //kShaderType_3DSkinPositionNormalTex,
+    //kShaderType_3DPositionBumpedNormalTex,
+    //kShaderType_3DSkinPositionBumpedNormalTex,
+    //kShaderType_3DParticleTex,
+    //kShaderType_3DParticleColor,
     kShaderType_3DSkyBox,
-    kShaderType_3DTerrain,
+    //kShaderType_3DTerrain,
     kShaderType_CameraClear,
     // ETC1 ALPHA supports.
     kShaderType_ETC1ASPositionTextureColor,
@@ -128,11 +128,11 @@ bool GLProgramCache::init()
 {
     loadDefaultGLPrograms();
     
-    auto listener = EventListenerCustom::create(Configuration::CONFIG_FILE_LOADED, [this](EventCustom* /*event*/){
+    /*auto listener = EventListenerCustom::create(Configuration::CONFIG_FILE_LOADED, [this](EventCustom* event){
         reloadDefaultGLProgramsRelativeToLights();
     });
     
-    Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(listener, -1);
+	Director::getInstance()->getEventDispatcher()->addEventListenerWithFixedPriority(listener, -1);*/
     
     return true;
 }
@@ -231,8 +231,8 @@ void GLProgramCache::loadDefaultGLPrograms()
     p = new (std::nothrow) GLProgram();
     loadDefaultGLProgram(p, kShaderType_LabelOutline);
     _programs.emplace(GLProgram::SHADER_NAME_LABEL_OUTLINE, p);
-
-    p = new (std::nothrow) GLProgram();
+	
+	/*p = new (std::nothrow) GLProgram();
     loadDefaultGLProgram(p, kShaderType_3DPosition);
     _programs.emplace(GLProgram::SHADER_3D_POSITION, p);
 
@@ -270,15 +270,15 @@ void GLProgramCache::loadDefaultGLPrograms()
 
     p = new (std::nothrow) GLProgram();
     loadDefaultGLProgram(p, kShaderType_3DParticleTex);
-    _programs.emplace(GLProgram::SHADER_3D_PARTICLE_TEXTURE, p);
+    _programs.emplace(GLProgram::SHADER_3D_PARTICLE_TEXTURE, p);*/
 
     p = new (std::nothrow) GLProgram();
     loadDefaultGLProgram(p, kShaderType_3DSkyBox);
     _programs.emplace(GLProgram::SHADER_3D_SKYBOX, p);
 
-    p = new (std::nothrow) GLProgram();
+    /*p = new (std::nothrow) GLProgram();
     loadDefaultGLProgram(p, kShaderType_3DTerrain);
-    _programs.emplace(GLProgram::SHADER_3D_TERRAIN, p);
+    _programs.emplace(GLProgram::SHADER_3D_TERRAIN, p);*/
     
     p = new (std::nothrow) GLProgram();
     loadDefaultGLProgram(p, kShaderType_CameraClear);
@@ -403,7 +403,7 @@ void GLProgramCache::reloadDefaultGLPrograms()
     p->reset();
     loadDefaultGLProgram(p, kShaderType_LabelOutline);
 
-    p = getGLProgram(GLProgram::SHADER_3D_POSITION);
+    /*p = getGLProgram(GLProgram::SHADER_3D_POSITION);
     p->reset();
     loadDefaultGLProgram(p, kShaderType_3DPosition);
 
@@ -441,15 +441,15 @@ void GLProgramCache::reloadDefaultGLPrograms()
 
     p = getGLProgram(GLProgram::SHADER_3D_PARTICLE_COLOR);
     p->reset();
-    loadDefaultGLProgram(p, kShaderType_3DParticleColor);
+    loadDefaultGLProgram(p, kShaderType_3DParticleColor);*/
 
     p = getGLProgram(GLProgram::SHADER_3D_SKYBOX);
     p->reset();
     loadDefaultGLProgram(p, kShaderType_3DSkyBox);
 
-    p = getGLProgram(GLProgram::SHADER_3D_TERRAIN);
+    /*p = getGLProgram(GLProgram::SHADER_3D_TERRAIN);
     p->reset();
-    loadDefaultGLProgram(p, kShaderType_3DTerrain);
+    loadDefaultGLProgram(p, kShaderType_3DTerrain);*/
     
     p = getGLProgram(GLProgram::SHADER_CAMERA_CLEAR);
     p->reset();
@@ -477,7 +477,7 @@ void GLProgramCache::reloadDefaultGLPrograms()
     loadDefaultGLProgram(p, kShaderType_LayerRadialGradient);
     _programs.emplace(GLProgram::SHADER_LAYER_RADIAL_GRADIENT, p);
 }
-
+/*
 void GLProgramCache::reloadDefaultGLProgramsRelativeToLights()
 {
     GLProgram *p = getGLProgram(GLProgram::SHADER_3D_POSITION_NORMAL);
@@ -499,7 +499,7 @@ void GLProgramCache::reloadDefaultGLProgramsRelativeToLights()
     p = getGLProgram(GLProgram::SHADER_3D_SKINPOSITION_BUMPEDNORMAL_TEXTURE);
     p->reset();
     loadDefaultGLProgram(p, kShaderType_3DSkinPositionBumpedNormalTex);
-}
+}*/
 
 void GLProgramCache::loadDefaultGLProgram(GLProgram *p, int type)
 {
@@ -557,7 +557,7 @@ void GLProgramCache::loadDefaultGLProgram(GLProgram *p, int type)
         case kShaderType_LabelOutline:
             p->initWithByteArrays(ccLabel_vert, ccLabelOutline_frag);
             break;
-        case kShaderType_3DPosition:
+        /*case kShaderType_3DPosition:
             p->initWithByteArrays(cc3D_PositionTex_vert, cc3D_Color_frag);
             break;
         case kShaderType_3DPositionTex:
@@ -605,13 +605,13 @@ void GLProgramCache::loadDefaultGLProgram(GLProgram *p, int type)
             break;
         case kShaderType_3DParticleColor:
             p->initWithByteArrays(cc3D_Particle_vert, cc3D_Particle_color_frag);
-            break;
+            break;*/
         case kShaderType_3DSkyBox:
             p->initWithByteArrays(cc3D_Skybox_vert, cc3D_Skybox_frag);
             break;
-        case kShaderType_3DTerrain:
+        /*case kShaderType_3DTerrain:
             p->initWithByteArrays(cc3D_Terrain_vert, cc3D_Terrain_frag);
-            break;
+            break;*/
         case kShaderType_CameraClear:
             p->initWithByteArrays(ccCameraClearVert, ccCameraClearFrag);
             break;
@@ -665,7 +665,7 @@ void GLProgramCache::addGLProgram(GLProgram* program, const std::string &key)
         program->retain();
     _programs[key] = program;
 }
-
+/*
 std::string GLProgramCache::getShaderMacrosForLight() const
 {
     GLchar def[256];
@@ -678,6 +678,6 @@ std::string GLProgramCache::getShaderMacrosForLight() const
              conf->getMaxSupportPointLightInShader(),
              conf->getMaxSupportSpotLightInShader());
     return std::string(def);
-}
+}*/
 
 NS_CC_END

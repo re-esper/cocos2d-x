@@ -33,7 +33,7 @@
 #include "scripting/lua-bindings/manual/CCLuaEngine.h"
 #include "scripting/lua-bindings/manual/LuaBasicConversions.h"
 #include "scripting/lua-bindings/manual/cocos2d/LuaScriptHandlerMgr.h"
-#include "deprecated/CCString.h"
+//#include "deprecated/CCString.h"
 
 using namespace cocos2d;
 
@@ -260,6 +260,7 @@ tolua_lerror:
 #endif //#ifndef TOLUA_DISABLE
 
 /* method: createByAProtocol of class WebSocket */
+/*
 #ifndef TOLUA_DISABLE_tolua_Cocos2d_WebSocket_createByProtocolArray00
 static int tolua_Cocos2d_WebSocket_createByProtocolArray00(lua_State* tolua_S)
 {
@@ -301,6 +302,7 @@ tolua_lerror:
 #endif
 }
 #endif //#ifndef TOLUA_DISABLE
+*/
 
 /* method: getReadyState of class WebSocket */
 #ifndef TOLUA_DISABLE_tolua_Cocos2d_WebSocket_getReadyState00
@@ -453,7 +455,7 @@ TOLUA_API int tolua_web_socket_open(lua_State* tolua_S){
       tolua_beginmodule(tolua_S,"WebSocket");
         tolua_function(tolua_S, "create", tolua_Cocos2d_WebSocket_create00);
         tolua_function(tolua_S, "createByAProtocol", tolua_Cocos2d_WebSocket_createByAProtocol00);
-        tolua_function(tolua_S, "createByProtocolArray", tolua_Cocos2d_WebSocket_createByProtocolArray00);
+        //tolua_function(tolua_S, "createByProtocolArray", tolua_Cocos2d_WebSocket_createByProtocolArray00);
         tolua_function(tolua_S, "getReadyState", tolua_Cocos2d_WebSocket_getReadyState00);
         tolua_function(tolua_S, "close", tolua_Cocos2d_WebSocket_close00);
         tolua_function(tolua_S, "sendString", tolua_Cocos2d_WebSocket_sendString00);

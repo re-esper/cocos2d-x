@@ -26,10 +26,10 @@
 #include "scripting/lua-bindings/manual/CCLuaEngine.h"
 #include "scripting/lua-bindings/manual/tolua_fix.h"
 
-#include "extensions/GUI/CCControlExtension/CCControl.h"
+//#include "extensions/GUI/CCControlExtension/CCControl.h"
 #include "scripting/lua-bindings/manual/cocos2d/LuaOpengl.h"
 #include "scripting/lua-bindings/manual/cocos2d/lua_cocos2dx_manual.hpp"
-#include "scripting/lua-bindings/manual/extension/lua_cocos2dx_extension_manual.h"
+//#include "scripting/lua-bindings/manual/extension/lua_cocos2dx_extension_manual.h"
 #include "scripting/lua-bindings/manual/cocostudio/lua_cocos2dx_coco_studio_manual.hpp"
 #include "scripting/lua-bindings/manual/ui/lua_cocos2dx_ui_manual.hpp"
 #include "2d/CCMenuItem.h"
@@ -117,7 +117,7 @@ int LuaEngine::executeMenuItemEvent(MenuItem* pMenuItem)
     return 0;
 }
 
-int LuaEngine::executeNotificationEvent(__NotificationCenter* pNotificationCenter, const char* pszName)
+/*int LuaEngine::executeNotificationEvent(__NotificationCenter* pNotificationCenter, const char* pszName)
 {
     int nHandler = pNotificationCenter->getObserverHandlerByName(pszName);
     if (!nHandler) return 0;
@@ -126,7 +126,7 @@ int LuaEngine::executeNotificationEvent(__NotificationCenter* pNotificationCente
     int ret = _stack->executeFunctionByHandler(nHandler, 1);
     _stack->clean();
     return ret;
-}
+}*/
 
 int LuaEngine::executeCallFuncActionEvent(CallFunc* pAction, Ref* pTarget/* = NULL*/)
 {
@@ -147,10 +147,10 @@ int LuaEngine::executeLayerTouchEvent(Layer* pLayer, int eventType, Touch *pTouc
     return 0;
 }
 
-int LuaEngine::executeLayerTouchesEvent(Layer* pLayer, int eventType, __Set *pTouches)
+/*int LuaEngine::executeLayerTouchesEvent(Layer* pLayer, int eventType, __Set *pTouches)
 {
     return 0;
-}
+}*/
 
 int LuaEngine::executeLayerKeypadEvent(Layer* pLayer, int eventType)
 {
@@ -255,12 +255,12 @@ int LuaEngine::sendEvent(ScriptEvent* evt)
             {
                 return handleCommonEvent(evt->data);
             }
-            break;
-        case kControlEvent:
+            break;		
+        /*case kControlEvent:
             {
                 return handlerControlEvent(evt->data);
             }
-            break;
+            break;*/
         default:
             break;
     }
@@ -561,7 +561,7 @@ int LuaEngine::handleTouchesEvent(void* data)
     _stack->clean();
     return ret;
 }
-
+/*
 int LuaEngine::handlerControlEvent(void* data)
 {
     if ( NULL == data )
@@ -594,7 +594,7 @@ int LuaEngine::handlerControlEvent(void* data)
     }
 
     return ret;    
-}
+}*/
 
 int LuaEngine::handleEventAcc(void* data)
 {
@@ -765,7 +765,7 @@ int LuaEngine::handleEvent(ScriptHandlerMgr::HandlerType type,void* data)
 {
     switch (type)
     {
-        case ScriptHandlerMgr::HandlerType::SCROLLVIEW_SCROLL:
+        /*case ScriptHandlerMgr::HandlerType::SCROLLVIEW_SCROLL:
         case ScriptHandlerMgr::HandlerType::SCROLLVIEW_ZOOM:
         case ScriptHandlerMgr::HandlerType::TABLECELL_TOUCHED:
         case ScriptHandlerMgr::HandlerType::TABLECELL_HIGHLIGHT:
@@ -781,7 +781,7 @@ int LuaEngine::handleEvent(ScriptHandlerMgr::HandlerType type,void* data)
             {
                 return handleAssetsManagerEvent(type, data);
             }
-            break;
+            break;*/
         case ScriptHandlerMgr::HandlerType::ARMATURE_EVENT:
             {
                 return handleArmatureWrapper(type, data);
@@ -833,7 +833,7 @@ int LuaEngine::handleEvent(ScriptHandlerMgr::HandlerType type,void* data)
     
     return 0;
 }
-
+/*
 int LuaEngine::handleEvent(ScriptHandlerMgr::HandlerType type, void* data, int numResults, const std::function<void(lua_State*,int)>& func)
 {
     switch (type)
@@ -991,7 +991,7 @@ int LuaEngine::handleAssetsManagerEvent(ScriptHandlerMgr::HandlerType type,void*
     
     return ret;
 }
-
+*/
 int LuaEngine::handleArmatureWrapper(ScriptHandlerMgr::HandlerType type,void* data)
 {
     if (nullptr == data)

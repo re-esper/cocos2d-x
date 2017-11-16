@@ -24,11 +24,11 @@
 
 #include "scripting/lua-bindings/manual/LuaBasicConversions.h"
 #include "scripting/lua-bindings/manual/tolua_fix.h"
-#include "deprecated/CCBool.h"
+//#include "deprecated/CCBool.h"
 
-#include "deprecated/CCDouble.h"
-#include "deprecated/CCFloat.h"
-#include "deprecated/CCInteger.h"
+//#include "deprecated/CCDouble.h"
+//#include "deprecated/CCFloat.h"
+//#include "deprecated/CCInteger.h"
 
 std::unordered_map<std::string, std::string>  g_luaType;
 std::unordered_map<std::string, std::string>  g_typeCast;
@@ -1140,6 +1140,7 @@ bool luaval_to_mat4(lua_State* L, int lo, cocos2d::Mat4* outValue , const char* 
     return ok;
 }
 
+/*
 bool luaval_to_array(lua_State* L,int lo, __Array** outValue, const char* funcName)
 {
     if (NULL == L || NULL == outValue)
@@ -1262,8 +1263,8 @@ bool luaval_to_dictionary(lua_State* L,int lo, __Dictionary** outValue, const ch
         std::string stringValue = "";
         bool boolVal = false;
         __Dictionary* dict = NULL;
-        lua_pushnil(L);                                             /* L: lotable ..... nil */
-        while ( 0 != lua_next(L, lo ) )                             /* L: lotable ..... key value */
+        lua_pushnil(L);                                             // L: lotable ..... nil
+        while ( 0 != lua_next(L, lo ) )                             // L: lotable ..... key value
         {
             if (!lua_isstring(L, -2))
             {
@@ -1334,15 +1335,15 @@ bool luaval_to_dictionary(lua_State* L,int lo, __Dictionary** outValue, const ch
                 }
             }
 
-            lua_pop(L, 1);                                          /* L: lotable ..... key */
+            lua_pop(L, 1);                                          // L: lotable ..... key
         }
 
-                                                                    /* L: lotable ..... */
+                                                                    // L: lotable .....
         *outValue = dict;
     }
 
     return ok;
-}
+}*/
 
 bool luaval_to_array_of_vec2(lua_State* L,int lo,cocos2d::Vec2 **points, int *numPoints, const char* funcName)
 {
@@ -1399,7 +1400,7 @@ bool luaval_to_array_of_vec2(lua_State* L,int lo,cocos2d::Vec2 **points, int *nu
     return ok;
 }
 
-
+/*
 bool luavals_variadic_to_array(lua_State* L,int argc, __Array** ret)
 {
     if (nullptr == L || argc == 0 )
@@ -1443,7 +1444,7 @@ bool luavals_variadic_to_array(lua_State* L,int argc, __Array** ret)
     *ret = array;
 
     return ok;
-}
+}*/
 
 bool luavals_variadic_to_ccvaluevector(lua_State* L, int argc, cocos2d::ValueVector* ret)
 {
@@ -1895,7 +1896,7 @@ bool luaval_to_std_vector_int(lua_State* L, int lo, std::vector<int>* ret, const
 
     return ok;
 }
-
+/*
 bool luaval_to_mesh_vertex_attrib(lua_State* L, int lo, cocos2d::MeshVertexAttrib* ret, const char* funcName)
 {
     if (nullptr == L || nullptr == ret || lua_gettop(L) < lo)
@@ -1915,30 +1916,30 @@ bool luaval_to_mesh_vertex_attrib(lua_State* L, int lo, cocos2d::MeshVertexAttri
 
     if (ok)
     {
-        lua_pushstring(L, "size");                  /* L: paramStack key */
-        lua_gettable(L,lo);                         /* L: paramStack paramStack[lo][key] */
+        lua_pushstring(L, "size");                  // L: paramStack key 
+        lua_gettable(L,lo);                         // L: paramStack paramStack[lo][key]
         ret->size  = (GLint)lua_tonumber(L, -1);
         lua_pop(L,1);
 
-        lua_pushstring(L, "type");                  /* L: paramStack key */
-        lua_gettable(L,lo);                         /* L: paramStack paramStack[lo][key] */
+        lua_pushstring(L, "type");                  // L: paramStack key
+        lua_gettable(L,lo);                         // L: paramStack paramStack[lo][key]
         ret->type  = (GLenum)lua_tonumber(L, -1);
         lua_pop(L,1);
 
-        lua_pushstring(L, "vertexAttrib");          /* L: paramStack key */
-        lua_gettable(L,lo);                         /* L: paramStack paramStack[lo][key] */
+        lua_pushstring(L, "vertexAttrib");          // L: paramStack key
+        lua_gettable(L,lo);                         // L: paramStack paramStack[lo][key]
         ret->type  = (GLenum)lua_tonumber(L, -1);
         lua_pop(L,1);
 
-        lua_pushstring(L, "attribSizeBytes");       /* L: paramStack key */
-        lua_gettable(L,lo);                         /* L: paramStack paramStack[lo][key] */
+        lua_pushstring(L, "attribSizeBytes");       // L: paramStack key
+        lua_gettable(L,lo);                         // L: paramStack paramStack[lo][key]
         ret->type  = (GLenum)lua_tonumber(L, -1);
         lua_pop(L,1);
     }
 
     return ok;
 
-}
+}*/
 
 bool luaval_to_std_vector_float(lua_State* L, int lo, std::vector<float>* ret, const char* funcName)
 {
@@ -2644,6 +2645,7 @@ void fontdefinition_to_luaval(lua_State* L,const FontDefinition& inValue)
     lua_rawset(L, -3);                                  /* table[key] = value, L: table */
 }
 
+/*
 void array_to_luaval(lua_State* L,__Array* inValue)
 {
     lua_newtable(L);
@@ -2816,7 +2818,7 @@ void dictionary_to_luaval(lua_State* L, __Dictionary* dict)
             CCASSERT(false, "the type isn't supported.");
         }
     }
-}
+}*/
 
 void ccvalue_to_luaval(lua_State* L,const cocos2d::Value& inValue)
 {
@@ -3184,6 +3186,7 @@ void vertexattrib_to_luaval(lua_State* L, const cocos2d::VertexAttrib& verAttrib
     lua_rawset(L, -3);
 }
 
+/*
 void mesh_vertex_attrib_to_luaval(lua_State* L, const cocos2d::MeshVertexAttrib& inValue)
 {
     if (nullptr == L)
@@ -3206,8 +3209,7 @@ void mesh_vertex_attrib_to_luaval(lua_State* L, const cocos2d::MeshVertexAttrib&
     lua_pushstring(L, "attribSizeBytes");
     lua_pushnumber(L, (lua_Number)inValue.attribSizeBytes);
     lua_rawset(L, -3);
-}
-
+}*/
 
 void ccvector_std_string_to_luaval(lua_State* L, const std::vector<std::string>& inValue)
 {

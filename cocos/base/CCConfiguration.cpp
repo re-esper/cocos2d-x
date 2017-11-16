@@ -55,10 +55,10 @@ Configuration::Configuration()
 , _maxSamplesAllowed(0)
 , _maxTextureUnits(0)
 , _glExtensions(nullptr)
-, _maxDirLightInShader(1)
+/*, _maxDirLightInShader(1)
 , _maxPointLightInShader(1)
 , _maxSpotLightInShader(1)
-, _animate3DQuality(Animate3DQuality::QUALITY_LOW)
+, _animate3DQuality(Animate3DQuality::QUALITY_LOW)*/
 {
     _loadedEvent = new (std::nothrow) EventCustom(CONFIG_FILE_LOADED);
 }
@@ -305,7 +305,7 @@ bool Configuration::supportsOESPackedDepthStencil() const
 }
 
 
-
+/*
 int Configuration::getMaxSupportDirLightInShader() const
 {
     return _maxDirLightInShader;
@@ -324,7 +324,7 @@ int Configuration::getMaxSupportSpotLightInShader() const
 Animate3DQuality Configuration::getAnimate3DQuality() const
 {
     return _animate3DQuality;
-}
+}*/
 
 //
 // generic getters for properties
@@ -397,6 +397,7 @@ void Configuration::loadConfigFile(const std::string& filename)
             CCLOG("Key already present. Ignoring '%s'",dataMapIter.first.c_str());
     }
     
+	/*
     //light info
     std::string name = "cocos2d.x.3d.max_dir_light_in_shader";
 	if (_valueDict.find(name) != _valueDict.end())
@@ -420,7 +421,7 @@ void Configuration::loadConfigFile(const std::string& filename)
     if (_valueDict.find(name) != _valueDict.end())
         _animate3DQuality = (Animate3DQuality)_valueDict[name].asInt();
     else
-        _valueDict[name] = Value((int)_animate3DQuality);
+        _valueDict[name] = Value((int)_animate3DQuality);*/
     
     Director::getInstance()->getEventDispatcher()->dispatchEvent(_loadedEvent);
 }

@@ -55,8 +55,8 @@
 #include "base/CCScheduler.h"
 #include "base/CCUserDefault.h"
 #include "base/ccUtils.h"
-#include "deprecated/CCBool.h"
-#include "deprecated/CCInteger.h"
+//#include "deprecated/CCBool.h"
+//#include "deprecated/CCInteger.h"
 #include "platform/CCApplication.h"
 #include "platform/CCDevice.h"
 #include "platform/CCFileUtils.h"
@@ -572,6 +572,7 @@ static int executeScriptTouchesHandler(Layer* layer, EventTouch::EventCode event
     return ScriptEngineManager::getInstance()->getScriptEngine()->sendEvent(&scriptEvent);
 }
 
+/*
 static void setTouchEnabledForLayer(Layer* layer, bool enabled)
 {
     if (nullptr == layer)
@@ -1656,7 +1657,7 @@ tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'tolua_cocos2d_Layer_unregisterScriptAccelerateHandler'.",&tolua_err);
     return 0;
 #endif
-}
+}*/
 
 static int tolua_cocos2d_Scheduler_scheduleScriptFunc(lua_State* tolua_S)
 {
@@ -3438,6 +3439,7 @@ tolua_lerror:
     return 0;
 }
 
+/*
 // setBlendFunc
 template<class T>
 static int tolua_cocos2dx_setBlendFunc(lua_State* tolua_S,const char* className)
@@ -3584,7 +3586,7 @@ CC_DEPRECATED_ATTRIBUTE static int tolua_cocos2dx_DrawNode_setBlendFunc01(lua_St
     }
 
     return lua_cocos2dx_DrawNode_setBlendFunc(tolua_S);
-}
+}*/
 
 static int tolua_cocos2dx_LayerMultiplex_create(lua_State* tolua_S)
 {
@@ -3628,6 +3630,7 @@ tolua_lerror:
 #endif
 }
 
+/*
 static int tolua_cocos2dx_FileUtils_getStringFromFile(lua_State* tolua_S)
 {
     if (nullptr == tolua_S)
@@ -3729,7 +3732,7 @@ tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'tolua_cocos2dx_FileUtils_getDataFromFile'.",&tolua_err);
     return 0;
 #endif
-}
+}*/
 
 static int tolua_cocos2dx_UserDefault_getInstance(lua_State* tolua_S)
 {
@@ -4930,7 +4933,7 @@ static void extendLayer(lua_State* tolua_S)
     lua_rawget(tolua_S,LUA_REGISTRYINDEX);
     if (lua_istable(tolua_S,-1))
     {
-        lua_pushstring(tolua_S,"registerScriptTouchHandler");
+        /*lua_pushstring(tolua_S,"registerScriptTouchHandler");
         lua_pushcfunction(tolua_S,tolua_cocos2d_Layer_registerScriptTouchHandler);
         lua_rawset(tolua_S,-3);
         lua_pushstring(tolua_S, "unregisterScriptTouchHandler");
@@ -4959,7 +4962,7 @@ static void extendLayer(lua_State* tolua_S)
         tolua_function(tolua_S, "isKeyboardEnabled", lua_cocos2dx_Layer_isKeyboardEnabled);
         tolua_function(tolua_S, "setAccelerometerEnabled", lua_cocos2dx_Layer_setAccelerometerEnabled);
         tolua_function(tolua_S, "isAccelerometerEnabled", lua_cocos2dx_Layer_isAccelerometerEnabled);
-        tolua_function(tolua_S, "setAccelerometerInterval", lua_cocos2dx_Layer_setAccelerometerInterval);
+        tolua_function(tolua_S, "setAccelerometerInterval", lua_cocos2dx_Layer_setAccelerometerInterval);*/
     }
     lua_pop(tolua_S, 1);
 }
@@ -5114,9 +5117,9 @@ static void extendDrawNode(lua_State* tolua_S)
         lua_pushcfunction(tolua_S,tolua_cocos2dx_DrawNode_drawPoints);
         lua_rawset(tolua_S,-3);
 
-        lua_pushstring(tolua_S,"setBlendFunc");
+        /*lua_pushstring(tolua_S,"setBlendFunc");
         lua_pushcfunction(tolua_S,tolua_cocos2dx_DrawNode_setBlendFunc01);
-        lua_rawset(tolua_S,-3);
+        lua_rawset(tolua_S,-3);*/
     }
     lua_pop(tolua_S, 1);
 }
@@ -5302,7 +5305,7 @@ static void extendSprite(lua_State* tolua_S)
     lua_rawget(tolua_S,LUA_REGISTRYINDEX);
     if (lua_istable(tolua_S,-1))
     {
-        tolua_function(tolua_S, "setBlendFunc", tolua_cocos2dx_Sprite_setBlendFunc01);
+        //tolua_function(tolua_S, "setBlendFunc", tolua_cocos2dx_Sprite_setBlendFunc01);
         tolua_function(tolua_S, "initWithPolygon", lua_cocos2dx_Sprite_initWithPolygon);
         tolua_function(tolua_S, "setPolygonInfo", lua_cocos2dx_Sprite_setPolygonInfo);
         tolua_function(tolua_S, "create", lua_cocos2dx_Sprite_create);
@@ -5316,9 +5319,9 @@ static void extendLayerColor(lua_State* tolua_S)
     lua_rawget(tolua_S,LUA_REGISTRYINDEX);
     if (lua_istable(tolua_S,-1))
     {
-        lua_pushstring(tolua_S,"setBlendFunc");
+        /*lua_pushstring(tolua_S,"setBlendFunc");
         lua_pushcfunction(tolua_S,tolua_cocos2dx_LayerColor_setBlendFunc01);
-        lua_rawset(tolua_S,-3);
+        lua_rawset(tolua_S,-3);*/
     }
     lua_pop(tolua_S, 1);
 }
@@ -5342,9 +5345,9 @@ static void extendParticleSystem(lua_State* tolua_S)
     lua_rawget(tolua_S,LUA_REGISTRYINDEX);
     if (lua_istable(tolua_S,-1))
     {
-        lua_pushstring(tolua_S,"setBlendFunc");
+        /*lua_pushstring(tolua_S,"setBlendFunc");
         lua_pushcfunction(tolua_S,tolua_cocos2dx_ParticleSystem_setBlendFunc01);
-        lua_rawset(tolua_S,-3);
+        lua_rawset(tolua_S,-3);*/
     }
     lua_pop(tolua_S, 1);
 }
@@ -5355,13 +5358,13 @@ static void extendFileUtils(lua_State* tolua_S)
     lua_rawget(tolua_S, LUA_REGISTRYINDEX);
     if (lua_istable(tolua_S,-1))
     {
-        lua_pushstring(tolua_S,"getStringFromFile");
+        /*lua_pushstring(tolua_S,"getStringFromFile");
         lua_pushcfunction(tolua_S,tolua_cocos2dx_FileUtils_getStringFromFile );
         lua_rawset(tolua_S,-3);
 
         lua_pushstring(tolua_S,"getDataFromFile");
         lua_pushcfunction(tolua_S,tolua_cocos2dx_FileUtils_getDataFromFile );
-        lua_rawset(tolua_S,-3);
+        lua_rawset(tolua_S,-3);*/
     }
     lua_pop(tolua_S, 1);
 }
@@ -5389,9 +5392,9 @@ static void extendSpriteBatchNode(lua_State* tolua_S)
         lua_pushcfunction(tolua_S,tolua_cocos2dx_SpriteBatchNode_getDescendants );
         lua_rawset(tolua_S,-3);
 
-        lua_pushstring(tolua_S,"setBlendFunc");
+        /*lua_pushstring(tolua_S,"setBlendFunc");
         lua_pushcfunction(tolua_S,tolua_cocos2dx_SpriteBatchNode_setBlendFunc01);
-        lua_rawset(tolua_S,-3);
+        lua_rawset(tolua_S,-3);*/
     }
     lua_pop(tolua_S, 1);
 }
@@ -5402,9 +5405,9 @@ static void extendMotionStreak(lua_State* tolua_S)
     lua_rawget(tolua_S, LUA_REGISTRYINDEX);
     if (lua_istable(tolua_S,-1))
     {
-        lua_pushstring(tolua_S,"setBlendFunc");
+        /*lua_pushstring(tolua_S,"setBlendFunc");
         lua_pushcfunction(tolua_S,tolua_cocos2dx_MotionStreak_setBlendFunc01);
-        lua_rawset(tolua_S,-3);
+        lua_rawset(tolua_S,-3);*/
     }
     lua_pop(tolua_S, 1);
 }
@@ -5415,9 +5418,9 @@ static void extendAtlasNode(lua_State* tolua_S)
     lua_rawget(tolua_S, LUA_REGISTRYINDEX);
     if (lua_istable(tolua_S,-1))
     {
-        lua_pushstring(tolua_S,"setBlendFunc");
+        /*lua_pushstring(tolua_S,"setBlendFunc");
         lua_pushcfunction(tolua_S,tolua_cocos2dx_AtlasNode_setBlendFunc01);
-        lua_rawset(tolua_S,-3);
+        lua_rawset(tolua_S,-3);*/
     }
     lua_pop(tolua_S, 1);
 }
@@ -5428,9 +5431,9 @@ static void extendParticleBatchNode(lua_State* tolua_S)
     lua_rawget(tolua_S, LUA_REGISTRYINDEX);
     if (lua_istable(tolua_S,-1))
     {
-        lua_pushstring(tolua_S,"setBlendFunc");
+        /*lua_pushstring(tolua_S,"setBlendFunc");
         lua_pushcfunction(tolua_S,tolua_cocos2dx_ParticleBatchNode_setBlendFunc01);
-        lua_rawset(tolua_S,-3);
+        lua_rawset(tolua_S,-3);*/
     }
     lua_pop(tolua_S, 1);
 }

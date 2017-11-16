@@ -156,8 +156,8 @@ THE SOFTWARE.
 #include "renderer/CCGLProgramState.h"
 #include "renderer/CCGLProgramStateCache.h"
 #include "renderer/CCGroupCommand.h"
-#include "renderer/CCMaterial.h"
-#include "renderer/CCPass.h"
+//#include "renderer/CCMaterial.h"
+//#include "renderer/CCPass.h"
 #include "renderer/CCPrimitive.h"
 #include "renderer/CCPrimitiveCommand.h"
 #include "renderer/CCQuadCommand.h"
@@ -165,12 +165,12 @@ THE SOFTWARE.
 #include "renderer/CCRenderCommandPool.h"
 #include "renderer/CCRenderState.h"
 #include "renderer/CCRenderer.h"
-#include "renderer/CCTechnique.h"
+//#include "renderer/CCTechnique.h"
 #include "renderer/CCTexture2D.h"
 #include "renderer/CCTextureCube.h"
 #include "renderer/CCTextureCache.h"
 #include "renderer/CCTrianglesCommand.h"
-#include "renderer/CCVertexAttribBinding.h"
+//#include "renderer/CCVertexAttribBinding.h"
 #include "renderer/CCVertexIndexBuffer.h"
 #include "renderer/CCVertexIndexData.h"
 #include "renderer/CCFrameBuffer.h"
@@ -178,11 +178,13 @@ THE SOFTWARE.
 #include "renderer/ccShaders.h"
 
 // physics
+#if CC_USE_PHYSICS
 #include "physics/CCPhysicsBody.h"
 #include "physics/CCPhysicsContact.h"
 #include "physics/CCPhysicsJoint.h"
 #include "physics/CCPhysicsShape.h"
 #include "physics/CCPhysicsWorld.h"
+#endif
 
 // platform
 #include "platform/CCCommon.h"
@@ -287,33 +289,33 @@ THE SOFTWARE.
 
 //3d
 #include "3d/CCAABB.h"
-#include "3d/CCAnimate3D.h"
-#include "3d/CCAnimation3D.h"
-#include "3d/CCAttachNode.h"
-#include "3d/CCBillBoard.h"
+//#include "3d/CCAnimate3D.h"
+//#include "3d/CCAnimation3D.h"
+//#include "3d/CCAttachNode.h"
+//#include "3d/CCBillBoard.h"
 #include "3d/CCFrustum.h"
-#include "3d/CCMesh.h"
-#include "3d/CCMeshSkin.h"
-#include "3d/CCMotionStreak3D.h"
-#include "3d/CCMeshVertexIndexData.h"
+//#include "3d/CCMesh.h"
+//#include "3d/CCMeshSkin.h"
+//#include "3d/CCMotionStreak3D.h"
+//#include "3d/CCMeshVertexIndexData.h"
 #include "3d/CCOBB.h"
 #include "3d/CCPlane.h"
-#include "3d/CCRay.h"
-#include "3d/CCSkeleton3D.h"
-#include "3d/CCSkybox.h"
-#include "3d/CCSprite3D.h"
-#include "3d/CCSprite3DMaterial.h"
-#include "3d/CCTerrain.h"
+//#include "3d/CCRay.h"
+//#include "3d/CCSkeleton3D.h"
+//#include "3d/CCSkybox.h"
+//#include "3d/CCSprite3D.h"
+//#include "3d/CCSprite3DMaterial.h"
+//#include "3d/CCTerrain.h"
 
 // vr
-#include "vr/CCVRGenericRenderer.h"
+//#include "vr/CCVRGenericRenderer.h"
 
 
 // Deprecated
 // All deprecated features are include inside deprecated/CCDeprecated.h.
 // It is recommended that you just include what is needed.
 // eg. #include "deprecated/CCString.h" if you only need cocos2d::__String.
-#include "deprecated/CCDeprecated.h"
+//#include "deprecated/CCDeprecated.h"
 
 
 NS_CC_BEGIN

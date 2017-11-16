@@ -92,7 +92,7 @@ public:
     CC_DEPRECATED_ATTRIBUTE void addProgram(GLProgram* program, const std::string &key) { addGLProgram(program, key); }
     
     /** reload default programs these are relative to light */
-    void reloadDefaultGLProgramsRelativeToLights();
+    //void reloadDefaultGLProgramsRelativeToLights();
 
 private:
     /**
@@ -106,7 +106,7 @@ private:
     */
 
     /**Get macro define for lights in current openGL driver.*/
-    std::string getShaderMacrosForLight() const;
+    //std::string getShaderMacrosForLight() const;
 
     /**Predefined shaders.*/
     std::unordered_map<std::string, GLProgram*> _programs;

@@ -36,7 +36,7 @@ extern "C" {
 #include "scripting/lua-bindings/manual/CCLuaValue.h"
 #include "scripting/lua-bindings/manual/cocos2d/LuaScriptHandlerMgr.h"
 #include "scripting/lua-bindings/manual/Lua-BindingsExport.h"
-#include "deprecated/CCNotificationCenter.h"
+//#include "deprecated/CCNotificationCenter.h"
 
 /**
  * @addtogroup lua
@@ -165,10 +165,10 @@ public:
     virtual int executeGlobalFunction(const char* functionName) override;
     virtual int executeNodeEvent(Node* pNode, int nAction);
     virtual int executeMenuItemEvent(MenuItem* pMenuItem);
-    virtual int executeNotificationEvent(__NotificationCenter* pNotificationCenter, const char* pszName);
+    //virtual int executeNotificationEvent(__NotificationCenter* pNotificationCenter, const char* pszName);
     virtual int executeCallFuncActionEvent(CallFunc* pAction, Ref* pTarget = NULL);
     virtual int executeSchedule(int nHandler, float dt, Node* pNode = NULL);
-    virtual int executeLayerTouchesEvent(Layer* pLayer, int eventType, __Set *pTouches);
+    //virtual int executeLayerTouchesEvent(Layer* pLayer, int eventType, __Set *pTouches);
     virtual int executeLayerTouchEvent(Layer* pLayer, int eventType, Touch *pTouch);
     virtual int executeLayerKeypadEvent(Layer* pLayer, int eventType);
     virtual int executeAccelerometerEvent(Layer* pLayer, Acceleration* pAccelerationValue);
@@ -214,7 +214,7 @@ public:
      * @param func The callback would be called when numResults is > 0.
      * @return default return 0 otherwise return values according different ScriptHandlerMgr::HandlerType.
      */
-    virtual int handleEvent(ScriptHandlerMgr::HandlerType type, void* data, int numResults, const std::function<void(lua_State*,int)>& func);
+    //virtual int handleEvent(ScriptHandlerMgr::HandlerType type, void* data, int numResults, const std::function<void(lua_State*,int)>& func);
 private:
     LuaEngine(void)
     : _stack(nullptr)
@@ -230,11 +230,11 @@ private:
     int handleCommonEvent(void* data);
     int handleTouchEvent(void* data);
     int handleTouchesEvent(void* data);
-    int handlerControlEvent(void* data);
+    //int handlerControlEvent(void* data);
     int handleEvenCustom(void* data);
-    int handleAssetsManagerEvent(ScriptHandlerMgr::HandlerType type,void* data);
-    int handleTableViewEvent(ScriptHandlerMgr::HandlerType type,void* data);
-    int handleTableViewEvent(ScriptHandlerMgr::HandlerType type,void* data, int numResults, const std::function<void(lua_State*,int)>& func);
+    //int handleAssetsManagerEvent(ScriptHandlerMgr::HandlerType type,void* data);
+    //int handleTableViewEvent(ScriptHandlerMgr::HandlerType type,void* data);
+    //int handleTableViewEvent(ScriptHandlerMgr::HandlerType type,void* data, int numResults, const std::function<void(lua_State*,int)>& func);
     int handleArmatureWrapper(ScriptHandlerMgr::HandlerType type,void* data);
     int handleEventAcc(void* data);
     int handleEventKeyboard(ScriptHandlerMgr::HandlerType type,void* data);

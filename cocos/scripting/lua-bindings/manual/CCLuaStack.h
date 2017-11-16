@@ -30,7 +30,7 @@ extern "C" {
 #include "lua.h"
 }
 
-#include "deprecated/CCArray.h"
+//#include "deprecated/CCArray.h"
 
 #include "scripting/lua-bindings/manual/CCLuaValue.h"
 
@@ -272,7 +272,7 @@ public:
      * @param resultArray a array used to store the return value.
      * @return 0 if it happen error or it hasn't return value, otherwise return 1.
      */
-    virtual int executeFunctionReturnArray(int handler,int numArgs,int numResults,__Array& resultArray);
+    //virtual int executeFunctionReturnArray(int handler,int numArgs,int numResults,__Array& resultArray);
     
     /**
      * Execute the lua function corresponding to the handler by the numArgs variables passed.

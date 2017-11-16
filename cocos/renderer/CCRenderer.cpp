@@ -31,11 +31,11 @@
 #include "renderer/CCCustomCommand.h"
 #include "renderer/CCGroupCommand.h"
 #include "renderer/CCPrimitiveCommand.h"
-#include "renderer/CCMeshCommand.h"
+//#include "renderer/CCMeshCommand.h"
 #include "renderer/CCGLProgramCache.h"
-#include "renderer/CCMaterial.h"
-#include "renderer/CCTechnique.h"
-#include "renderer/CCPass.h"
+//#include "renderer/CCMaterial.h"
+//#include "renderer/CCTechnique.h"
+//#include "renderer/CCPass.h"
 #include "renderer/CCRenderState.h"
 #include "renderer/ccGLStateCache.h"
 
@@ -402,7 +402,7 @@ void Renderer::processRenderCommand(RenderCommand* command)
         _filledIndex += cmd->getIndexCount();
         _filledVertex += cmd->getVertexCount();
     }
-    else if (RenderCommand::Type::MESH_COMMAND == commandType)
+    /*else if (RenderCommand::Type::MESH_COMMAND == commandType)
     {
         flush2D();
         auto cmd = static_cast<MeshCommand*>(command);
@@ -432,7 +432,7 @@ void Renderer::processRenderCommand(RenderCommand* command)
             CCGL_DEBUG_INSERT_EVENT_MARKER("RENDERER_MESH_COMMAND");
             cmd->batchDraw();
         }
-    }
+    }*/
     else if(RenderCommand::Type::GROUP_COMMAND == commandType)
     {
         flush();
@@ -880,13 +880,13 @@ void Renderer::flush2D()
 
 void Renderer::flush3D()
 {
-    if (_lastBatchedMeshCommand)
+    /*if (_lastBatchedMeshCommand)
     {
         CCGL_DEBUG_INSERT_EVENT_MARKER("RENDERER_BATCH_MESH");
 
         _lastBatchedMeshCommand->postBatchDraw();
         _lastBatchedMeshCommand = nullptr;
-    }
+    }*/
 }
 
 void Renderer::flushTriangles()

@@ -26,6 +26,7 @@
 
 #include <unordered_map>
 #include <string>
+#include <sstream>
 
 extern "C" {
 #include "lua.h"
@@ -37,15 +38,17 @@ extern "C" {
 #include "editor-support/cocostudio/CocosStudioExtension.h"
 #include "2d/CCLabel.h"
 #include "2d/CCSprite.h"
-#include "3d/CCBundle3D.h"
+//#include "3d/CCBundle3D.h"
 #include "base/CCValue.h"
 #include "base/ccTypes.h"
-#include "deprecated/CCArray.h"
-#include "deprecated/CCDictionary.h"
+//#include "deprecated/CCArray.h"
+//#include "deprecated/CCDictionary.h"
+#if CC_USE_PHYSICS
 #include "physics/CCPhysicsContact.h"
 #include "physics/CCPhysicsJoint.h"
 #include "physics/CCPhysicsShape.h"
 #include "physics/CCPhysicsWorld.h"
+#endif
 #include "renderer/CCGLProgram.h"
 
 
@@ -347,13 +350,13 @@ extern bool luaval_to_mat4(lua_State* L, int lo, cocos2d::Mat4* outValue , const
  * Get a __Array object value from the given acceptable index of stack.
  * Because __Array is deprecated, so this function would be not called anymore.
  */
-extern bool luaval_to_array(lua_State* L,int lo, __Array** outValue, const char* funcName = "");
+//extern bool luaval_to_array(lua_State* L,int lo, __Array** outValue, const char* funcName = "");
 
 /**
  * Get a __Dictionary object value from the given acceptable index of stack.
  * Because __Dictionary is deprecated, so this function would be not called anymore.
  */
-extern bool luaval_to_dictionary(lua_State* L,int lo, __Dictionary** outValue, const char* funcName = "");
+//extern bool luaval_to_dictionary(lua_State* L,int lo, __Dictionary** outValue, const char* funcName = "");
 
 /**
  * Get a array of Vec2 object from the given acceptable index of stack.
@@ -372,7 +375,7 @@ extern bool luaval_to_array_of_vec2(lua_State* L,int lo,cocos2d::Vec2 **points, 
  * Get a __Array object value by the argc numbers of Lua values in the stack.
  * Because __Array is deprecated, so this function would be not called anymore.
  */
-extern bool luavals_variadic_to_array(lua_State* L,int argc, __Array** ret);
+//extern bool luavals_variadic_to_array(lua_State* L,int argc, __Array** ret);
 
 /**
  * Get a cocos2d::ValueVector object value by the argc numbers of Lua values in the stack.
@@ -741,7 +744,7 @@ bool luaval_to_object(lua_State* L, int lo, const char* type, T** ret, const cha
  * @param funcName the name of calling function, it is used for error output in the debug model.
  * @return Return true if the value at the given acceptable index of stack is a table, otherwise return false.
  */
-extern bool luaval_to_mesh_vertex_attrib(lua_State* L, int lo, cocos2d::MeshVertexAttrib* ret, const char* funcName = "");
+//extern bool luaval_to_mesh_vertex_attrib(lua_State* L, int lo, cocos2d::MeshVertexAttrib* ret, const char* funcName = "");
 
 /**
  * Get a pointer points to a std::vector<float> from a Lua array table in the stack.
@@ -990,8 +993,8 @@ extern void affinetransform_to_luaval(lua_State* L,const AffineTransform& inValu
  */
 extern void fontdefinition_to_luaval(lua_State* L,const FontDefinition& inValue);
 
-extern void array_to_luaval(lua_State* L, __Array* inValue);
-extern void dictionary_to_luaval(lua_State* L, __Dictionary* dict);
+//extern void array_to_luaval(lua_State* L, __Array* inValue);
+//extern void dictionary_to_luaval(lua_State* L, __Dictionary* dict);
 
 
 /**
@@ -1238,7 +1241,7 @@ void object_to_luaval(lua_State* L,const char* type, T* ret)
  * @param L the current lua_State.
  * @param inValue a cocos2d::MeshVertexAttrib object.
  */
-void mesh_vertex_attrib_to_luaval(lua_State* L, const cocos2d::MeshVertexAttrib& inValue);
+//void mesh_vertex_attrib_to_luaval(lua_State* L, const cocos2d::MeshVertexAttrib& inValue);
 
 /**
  * Push a Lua array table converted from a std::vector<std::string> into the Lua stack.
